@@ -15,9 +15,10 @@ for folder in folders:
 
     for file in files:
         filePath = folderPath + '/' + file
-        image = cv2.imread(filePath)
+        image = cv2.imread(filePath, cv2.IMREAD_UNCHANGED)
 
         tiles = [image[x:x+M,y:y+M] for x in range(0,image.shape[0],M) for y in range(0,image.shape[1],M)]
+        print(tiles)
 
         im = Image.fromarray(tiles[0])
         im.save(folderPath + '/e' + file)
